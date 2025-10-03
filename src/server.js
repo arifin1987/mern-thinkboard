@@ -1,17 +1,23 @@
 import express from 'express'
 import router from './routes/notesRoutes.js';
+import { connectDB } from './config/db.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 
 const app = express();
+const PORT = process.env.PORT || 5001;
+connectDB();
 
 app.use('/api/notes', router);
 
 
 
-app.listen(5000, ()=>{
-    console.log('app is running successfullyyyyyy');
+app.listen(PORT, ()=>{
+    console.log('Server started on port:', PORT);
 })
 
 
 
-mongodb+srv://shohidularifin_db_user:Pm12hukwEXEe077f@cluster0.b12f0gr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
